@@ -1,0 +1,42 @@
+---
+title: "PS07"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## GitHub Documents
+
+Welcome to my first github! I am a current sophomore at Smith College studying Quantitative Economics and Statstical & Data sciences. 
+
+## Sample of my work
+
+You can include R code in the document as follows:
+
+```{r cars}
+library(ggplot2)
+library(moderndive)
+library(Stat2Data)
+data("Cereal")
+```
+Creating a model of the calories per serving of a cereal as a multiple regression function of the amount of sugar per serving (in grams).
+
+```{r}
+lR_cereal <- lm(Calories ~ Sugar, data = Cereal)
+LR_Cereal_points <- get_regression_points(lR_cereal)
+get_regression_table(lR_cereal)
+```
+
+## Including Plots
+
+I will plot the model I created above on a scatterplot of the observed data points
+
+```{r pressure, echo=FALSE}
+ggplot(Cereal, aes(x = Sugar, y = Calories)) +
+  geom_point() +
+  geom_smooth(method = lm, formula = y ~ x, se = FALSE)
+```
+
+
